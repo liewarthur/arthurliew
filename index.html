@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arthur Liew | Director & Visual Creator</title>
+    <title>Arthur Liew | Director & AI Visual Creator</title>
     <style>
         /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
             --bg-color: #0a0a0c;
             --surface-color: #121216;
+            --surface-hover: #1a1a22;
             --accent-color: #e50914; /* Crimson cinematic accent */
             --text-main: #ffffff;
             --text-muted: #a0a0aa;
@@ -32,6 +33,10 @@
 
         body {
             overflow-x: hidden;
+        }
+
+        body.modal-open {
+            overflow: hidden; /* Prevent background scroll when modal is active */
         }
 
         a {
@@ -126,6 +131,7 @@
             font-size: 0.85rem;
             border-radius: 4px;
             border: 1px solid var(--text-main);
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -176,6 +182,15 @@
             overflow: hidden;
         }
 
+        .about-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Graphic pattern fallback backdrop behind profile picture if transparent */
         .about-visual::before {
             content: '';
             position: absolute;
@@ -184,6 +199,7 @@
             background: conic-gradient(transparent, var(--accent-color), transparent 70%);
             animation: rotate 8s linear infinite;
             opacity: 0.15;
+            z-index: 1;
         }
 
         /* --- SHOWCASE SECTION --- */
@@ -198,11 +214,14 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: var(--transition);
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--surface-hover);
         }
 
         .card-img {
@@ -212,11 +231,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.15);
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
             font-size: 0.8rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.03);
         }
 
         .card-meta {
@@ -232,6 +264,144 @@
         .card-meta p {
             font-size: 0.9rem;
             color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* --- POP-UP MODAL (LIGHTBOX GALLERY) --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background-color: rgba(5, 5, 7, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-wrapper {
+            background-color: var(--surface-color);
+            width: 100%;
+            max-width: 960px;
+            max-height: 90vh;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .modal.active .modal-wrapper {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.25rem;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Gallery block inside pop-up */
+        .gallery-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(18, 18, 22, 0.7);
+            border: 1px solid rgba(255,255,255,0.05);
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            user-select: none;
+            z-index: 5;
+        }
+
+        .gallery-nav:hover { background: var(--accent-color); }
+        .gallery-nav.prev { left: 1rem; border-radius: 4px; }
+        .gallery-nav.next { right: 1rem; border-radius: 4px; }
+
+        .modal-content {
+            padding: 3rem;
+        }
+
+        .modal-header-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .modal-content h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .modal-body {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+
+        .modal-body p {
+            margin-bottom: 1.5rem;
         }
 
         /* --- CONTACT & FOOTER --- */
@@ -286,10 +456,12 @@
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
             header { padding: 1.25rem 1.5rem; }
-            nav { display: none; } /* Kept simple for minimalist fallback */
+            nav { display: none; }
             .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
             .hero { padding: 0 5%; }
             section { padding: 5rem 5%; }
+            .modal-content { padding: 1.5rem; }
+            .modal { padding: 1rem; }
         }
     </style>
 </head>
@@ -310,8 +482,8 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>Shaping narratives through a modern lens.</h1>
-        <p>I focus on seamless executing, premium pacing, and cutting-edge visual concepts for high-impact film and video production.</p>
+        <h1>Where ancient stories meet future vision.</h1>
+        <p>Rooted in folklore and tradition, reimagined through technology, AI, and the ambition to see what no frame has captured before.</p>
         <a href="#work" class="btn">View Showcase</a>
     </section>
 
@@ -320,52 +492,106 @@
         <div class="section-title">01 / Profile</div>
         <div class="about-grid">
             <div class="about-text">
-                <p>Hi, I'm Arthur. I blend classic storytelling methodologies with emerging visual toolsets to produce premium, modern digital media.</p>
-                <p>Whether handling agile indie sprint projects or building immersive high-end creative showcases, I focus entirely on narrative clarity, pacing excellence, and visual distinction.</p>
+                <p>Arthur is a Kuala Lumpur-based film director and educator — where technical rigour meets cinematic instinct.</p>
+                <p>Co-founder of production house Blackdotpeople, his work spans commercial campaigns to short films. A member of FDAM and PROFIMA, rooted in Malaysia's creative industry.</p>
+                <p>He directs, lectures, and explores the frontier of AI-driven visual storytelling — always evolving, always story-first.</p>
             </div>
             <div class="about-visual">
-                <div style="z-index:1; color:rgba(255,255,255,0.4); font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;">Visual Engine Active</div>
+                <img src="profile.jpg" alt="Arthur Liew Profile Placeholder" onerror="this.style.display='none';">
+                <div style="position: absolute; color:rgba(255,255,255,0.2); font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; font-weight:600;">[ portrait picture placeholder ]</div>
             </div>
         </div>
     </section>
 
     <!-- Showcase Section -->
     <section id="work">
-        <div class="section-title">02 / Selected Works</div>
+        <div class="section-title">02 / Works</div>
         <div class="showcase-grid">
-            <div class="card">
-                <div class="card-img">[ Project Preview 1 ]</div>
+            
+            <!-- Project 1 (With Active Interactive Modal Trigger) -->
+            <div class="card" id="trigger-project-1">
+                <div class="card-img">
+                    <img src="blooddebt1.jpg" alt="Narrative Production Showcase" onerror="this.style.display='none';">
+                    <span style="position:absolute; font-size:0.8rem; letter-spacing:1px;">Click to view project</span>
+                </div>
                 <div class="card-meta">
-                    <h3>Narrative Production</h3>
-                    <p>Conceptual framing, premium cinematography styles, and high-efficiency short-turnaround projects.</p>
+                    <h3>《血債》Blood Debt</h3>
+                    <p>AI Horror Short Film (Complete)</p>
                 </div>
             </div>
+            
+            <!-- Project 2 -->
             <div class="card">
-                <div class="card-img">[ Project Preview 2 ]</div>
+                <div class="card-img">
+                    <img src="project2-thumb.jpg" alt="Paper Girl Film Development" onerror="this.style.display='none';">
+                    <span style="position:absolute; font-size:0.8rem; letter-spacing:1px; color:var(--accent-color)">Coming Soon</span>
+                </div>
                 <div class="card-meta">
-                    <h3>Commercial / Aesthetic</h3>
-                    <p>Dynamic structural editing and clean frame pacing tailored perfectly to hold maximum user attention.</p>
+                    <h3>《念》Paper Girl</h3>
+                    <p>AI Fantasy Feature Film (In Development)</p>
                 </div>
             </div>
+            
+            <!-- Project 3 -->
             <div class="card">
-                <div class="card-img">[ Project Preview 3 ]</div>
+                <div class="card-img">
+                    <img src="project3-thumb.jpg" alt="Next-Gen Frameworks" onerror="this.style.display='none';">
+                    <span style="position:absolute; font-size:0.8rem; letter-spacing:1px;">Coming Soon</span>
+                </div>
                 <div class="card-meta">
-                    <h3>Next-Gen Frameworks</h3>
-                    <p>Exploring and mastering modern asset execution pipelines to break traditional cost/time barriers.</p>
+                    <h3>《六通》Spirit Whisperers</h3>
+                    <p>Live Action + AI Fantasy Feature Film (In Development)</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- INTERACTIVE POP-UP MODAL (Project 1 Gallery) -->
+    <div class="modal" id="portfolio-modal">
+        <div class="modal-wrapper">
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+            
+            <!-- Gallery Section -->
+            <div class="gallery-container">
+                <!-- Cleaned up duplicate image nodes down to one dynamic placeholder array node target -->
+                <img src="blooddebt1.jpg" alt="Project Scene View" class="gallery-main-img" id="main-gallery-img">
+                
+                <!-- Fallback layout label if no images load -->
+                <div id="gallery-fallback-text" style="position:absolute; color:rgba(255,255,255,0.3); font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; display:none;">[ Project Gallery Interface ]</div>
+                
+                <!-- Gallery Navigation Hooks -->
+                <div class="gallery-nav prev" id="gallery-prev">&#10094;</div>
+                <div class="gallery-nav next" id="gallery-next">&#10095;</div>
+            </div>
+
+            <!-- Content Details Section -->
+            <div class="modal-content">
+                <div class="modal-header-meta">
+                    <span>Short Film</span>
+                </div>
+                <h2>《血債》BLOOD DEBT</h2>
+                <div class="modal-body">
+                    <p>許願時，必有債。 血債，血償。 一個走投無路的男人踏入森林，以命換願——卻不知他將以血償還這筆血債。 </p>
+                    <p>When you wish, there is a debt. Blood debt, blood pays. A man with nowhere left to turn enters the forest to bargain — offering his life for a wish, not knowing the blood debt he must repay. </p>
+                    <p>創作者 Creator | 劉安華 Arthur Liew</p>
+                    <p>編劇 Screenplay | ChatGPT</p>
+                    <p>提示詞 Prompt | Claude x Gemini</p>
+                    <p>後期 Post | Davinci Resolve</p>
+                    <p>音樂 Music | SUNO</p>
+                    <p>影片生成 Video Generation | HIGGSFIELD</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Contact Section / Footer -->
     <section id="contact" class="contact">
-        <h2>Let's build something signature.</h2>
-        <p>Available for select commercial direction, narrative editing, and framework consultations worldwide.</p>
+        <h2>Let's resurrect a story the world forgot.</h2>
+        <p>Open to collaborations in commercial direction, visual storytelling, and AI-driven creative work — worldwide.</p>
         
         <div class="social-links">
-            <a href="mailto:contact@arthurliew.com">Email</a>
-            <a href="#" target="_blank">Vimeo</a>
-            <a href="#" target="_blank">LinkedIn</a>
+            <a href="mailto:liewarthur@gmail.com">Email</a>
+            <a href="https://www.instagram.com/arthurliew__/" target="_blank">Instagram</a>
         </div>
 
         <footer>
@@ -373,8 +599,9 @@
         </footer>
     </section>
 
-    <!-- Basic Interactive Highlighting Script -->
+    <!-- Dynamic Interface JavaScript Script -->
     <script>
+        /* --- SCROLL NAVIGATION HIGHLIGHTS --- */
         const navLinks = document.querySelectorAll('nav a');
         const sections = document.querySelectorAll('section');
 
@@ -393,6 +620,84 @@
                     link.classList.add('active');
                 }
             });
+        });
+
+        /* --- INTERACTIVE MODAL POP-UP LOGIC --- */
+        const projectCard = document.getElementById('trigger-project-1');
+        const modal = document.getElementById('portfolio-modal');
+        const closeModalBtn = document.getElementById('modal-close-btn');
+        const bodyElement = document.body;
+
+        // Open Modal Event
+        projectCard.addEventListener('click', () => {
+            modal.classList.add('active');
+            bodyElement.classList.add('modal-open');
+            activeGalleryIndex = 0; // Reset index to first element when modal pops open
+            updateGalleryImage();
+        });
+
+        // Close Modal Event
+        const closeModal = () => {
+            modal.classList.remove('active');
+            bodyElement.classList.remove('modal-open');
+        };
+
+        closeModalBtn.addEventListener('click', closeModal);
+        
+        // Close modal when hitting backdrop area outside container card box
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close on escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        /* --- QUICK LOCAL IMAGE GALLERY SWITCHER --- */
+        const galleryImages = [
+            'blooddebt1.jpg', 
+            'blooddebt2.jpg', 
+            'blooddebt3.jpg', 
+            'blooddebt4.jpg', 
+            'blooddebt5.jpg', 
+            'blooddebt6.jpg', 
+            'blooddebt7.jpg'
+        ];
+        let activeGalleryIndex = 0;
+
+        const mainImageContainer = document.getElementById('main-gallery-img');
+        const fallbackText = document.getElementById('gallery-fallback-text');
+        const prevBtn = document.getElementById('gallery-prev');
+        const nextBtn = document.getElementById('gallery-next');
+
+        // Main structural renderer logic engine
+        function updateGalleryImage() {
+            if(galleryImages.length > 0) {
+                if (fallbackText) fallbackText.style.display = 'none';
+                mainImageContainer.src = galleryImages[activeGalleryIndex];
+                mainImageContainer.style.display = 'block';
+            }
+        }
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Stops pop-up modal box itself from running close toggles
+            if(galleryImages.length > 0) {
+                activeGalleryIndex = (activeGalleryIndex + 1) % galleryImages.length;
+                updateGalleryImage();
+            }
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if(galleryImages.length > 0) {
+                activeGalleryIndex = (activeGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+                updateGalleryImage();
+            }
         });
     </script>
 </body>
