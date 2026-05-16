@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur Liew | Director & Visual Creator</title>
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --bg-color: #0a0a0c;
+            --surface-color: #121216;
+            --accent-color: #e50914; /* Crimson cinematic accent */
+            --text-main: #ffffff;
+            --text-muted: #a0a0aa;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(10,10,12,0.8), rgba(10,10,12,0));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(229, 9, 20, 0.08) 0%, transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            border: 1px solid var(--text-main);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTION BASE --- */
+        section {
+            padding: 8rem 10% ;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-color);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-visual {
+            position: relative;
+            aspect-ratio: 16/10;
+            background: var(--surface-color);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            background: conic-gradient(transparent, var(--accent-color), transparent 70%);
+            animation: rotate 8s linear infinite;
+            opacity: 0.15;
+        }
+
+        /* --- SHOWCASE SECTION --- */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #1a1a22;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.1);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .card-meta {
+            padding: 1.5rem;
+        }
+
+        .card-meta h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card-meta p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- CONTACT & FOOTER --- */
+        .contact {
+            text-align: center;
+            padding: 10rem 10%;
+            background: linear-gradient(to top, #0f0f12, var(--bg-color));
+        }
+
+        .contact h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .contact p {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .social-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        footer {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 1px;
+        }
+
+        /* --- ANIMATION --- */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            header { padding: 1.25rem 1.5rem; }
+            nav { display: none; } /* Kept simple for minimalist fallback */
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .hero { padding: 0 5%; }
+            section { padding: 5rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">Arthur Liew<span>.</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Shaping narratives through a modern lens.</h1>
+        <p>I focus on seamless executing, premium pacing, and cutting-edge visual concepts for high-impact film and video production.</p>
+        <a href="#work" class="btn">View Showcase</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">01 / Profile</div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Hi, I'm Arthur. I blend classic storytelling methodologies with emerging visual toolsets to produce premium, modern digital media.</p>
+                <p>Whether handling agile indie sprint projects or building immersive high-end creative showcases, I focus entirely on narrative clarity, pacing excellence, and visual distinction.</p>
+            </div>
+            <div class="about-visual">
+                <div style="z-index:1; color:rgba(255,255,255,0.4); font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;">Visual Engine Active</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section id="work">
+        <div class="section-title">02 / Selected Works</div>
+        <div class="showcase-grid">
+            <div class="card">
+                <div class="card-img">[ Project Preview 1 ]</div>
+                <div class="card-meta">
+                    <h3>Narrative Production</h3>
+                    <p>Conceptual framing, premium cinematography styles, and high-efficiency short-turnaround projects.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">[ Project Preview 2 ]</div>
+                <div class="card-meta">
+                    <h3>Commercial / Aesthetic</h3>
+                    <p>Dynamic structural editing and clean frame pacing tailored perfectly to hold maximum user attention.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">[ Project Preview 3 ]</div>
+                <div class="card-meta">
+                    <h3>Next-Gen Frameworks</h3>
+                    <p>Exploring and mastering modern asset execution pipelines to break traditional cost/time barriers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section / Footer -->
+    <section id="contact" class="contact">
+        <h2>Let's build something signature.</h2>
+        <p>Available for select commercial direction, narrative editing, and framework consultations worldwide.</p>
+        
+        <div class="social-links">
+            <a href="mailto:contact@arthurliew.com">Email</a>
+            <a href="#" target="_blank">Vimeo</a>
+            <a href="#" target="_blank">LinkedIn</a>
+        </div>
+
+        <footer>
+            &copy; 2026 arthurliew.com. All rights reserved.
+        </footer>
+    </section>
+
+    <!-- Basic Interactive Highlighting Script -->
+    <script>
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
