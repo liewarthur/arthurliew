@@ -190,7 +190,6 @@
             z-index: 2;
         }
 
-        /* Graphic pattern fallback backdrop behind profile picture if transparent */
         .about-visual::before {
             content: '';
             position: absolute;
@@ -484,7 +483,6 @@
     <section id="home" class="hero">
         <h1>Where ancient stories meet future vision.</h1>
         <p>Rooted in folklore and tradition, reimagined through technology, AI, and the ambition to see what no frame has captured before.</p>
-        <a href="#work" class="btn">View Showcase</a>
     </section>
 
     <!-- About Section -->
@@ -494,7 +492,7 @@
             <div class="about-text">
                 <p>Arthur is a Kuala Lumpur-based film director and educator — where technical rigour meets cinematic instinct.</p>
                 <p>Co-founder of production house Blackdotpeople, his work spans commercial campaigns to short films. A member of FDAM and PROFIMA, rooted in Malaysia's creative industry.</p>
-                <p>He directs, lectures, and explores the frontier of AI-driven visual storytelling — always evolving, always story-first.</p>
+                <p>Most recently an alumnus of the 2025 BIFAN NAFF Fantastic Film School, Arthur directs, lectures, and explores the frontier of AI-driven visual storytelling — always evolving, always story-first.</p>
             </div>
             <div class="about-visual">
                 <img src="profile.jpg" alt="Arthur Liew Profile Placeholder" onerror="this.style.display='none';">
@@ -508,23 +506,23 @@
         <div class="section-title">02 / Works</div>
         <div class="showcase-grid">
             
-            <!-- Project 1 (With Active Interactive Modal Trigger) -->
-            <div class="card" id="trigger-project-1">
+            <!-- Project 1 -->
+            <div class="card" data-modal-target="modal-project-1">
                 <div class="card-img">
                     <img src="blooddebt1.jpg" alt="Narrative Production Showcase" onerror="this.style.display='none';">
-                    <span style="position:absolute; font-size:0.8rem; letter-spacing:1px;">Click to view project</span>
+                    <span style="position:absolute; font-size:0.8rem; letter-spacing:1px;"></span>
                 </div>
                 <div class="card-meta">
                     <h3>《血債》Blood Debt</h3>
-                    <p>AI Horror Short Film (Complete)</p>
+                    <p>AI Horror Short Film</p>
                 </div>
             </div>
             
-            <!-- Project 2 -->
-            <div class="card">
+            <!-- Project 2 (Now upgraded to pop up) -->
+            <div class="card" data-modal-target="modal-project-2">
                 <div class="card-img">
-                    <img src="project2-thumb.jpg" alt="Paper Girl Film Development" onerror="this.style.display='none';">
-                    <span style="position:absolute; font-size:0.8rem; letter-spacing:1px; color:var(--accent-color)">Coming Soon</span>
+                    <img src="papergirl1.jpg" alt="Paper Girl Film Development" onerror="this.style.display='none';">
+                    <span style="position:absolute; font-size:0.8rem; letter-spacing:1px;"></span>
                 </div>
                 <div class="card-meta">
                     <h3>《念》Paper Girl</h3>
@@ -536,7 +534,7 @@
             <div class="card">
                 <div class="card-img">
                     <img src="project3-thumb.jpg" alt="Next-Gen Frameworks" onerror="this.style.display='none';">
-                    <span style="position:absolute; font-size:0.8rem; letter-spacing:1px;">Coming Soon</span>
+                    <span style="position:absolute; font-size:0.8rem; letter-spacing:1px; color:var(--accent-color)">Coming Soon</span>
                 </div>
                 <div class="card-meta">
                     <h3>《六通》Spirit Whisperers</h3>
@@ -547,24 +545,17 @@
     </section>
 
     <!-- INTERACTIVE POP-UP MODAL (Project 1 Gallery) -->
-    <div class="modal" id="portfolio-modal">
+    <div class="modal" id="modal-project-1">
         <div class="modal-wrapper">
-            <button class="modal-close" id="modal-close-btn">&times;</button>
+            <button class="modal-close">&times;</button>
             
-            <!-- Gallery Section -->
             <div class="gallery-container">
-                <!-- Cleaned up duplicate image nodes down to one dynamic placeholder array node target -->
-                <img src="blooddebt1.jpg" alt="Project Scene View" class="gallery-main-img" id="main-gallery-img">
-                
-                <!-- Fallback layout label if no images load -->
-                <div id="gallery-fallback-text" style="position:absolute; color:rgba(255,255,255,0.3); font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; display:none;">[ Project Gallery Interface ]</div>
-                
-                <!-- Gallery Navigation Hooks -->
-                <div class="gallery-nav prev" id="gallery-prev">&#10094;</div>
-                <div class="gallery-nav next" id="gallery-next">&#10095;</div>
+                <img src="blooddebt1.jpg" alt="Project Scene View" class="gallery-main-img" 
+                     data-gallery="blooddebt1.jpg,blooddebt2.jpg,blooddebt3.jpg,blooddebt4.jpg,blooddebt5.jpg,blooddebt6.jpg,blooddebt7.jpg">
+                <div class="gallery-nav prev">&#10094;</div>
+                <div class="gallery-nav next">&#10095;</div>
             </div>
 
-            <!-- Content Details Section -->
             <div class="modal-content">
                 <div class="modal-header-meta">
                     <span>Short Film</span>
@@ -584,6 +575,34 @@
         </div>
     </div>
 
+    <!-- INTERACTIVE POP-UP MODAL (Project 2 Gallery) -->
+    <div class="modal" id="modal-project-2">
+        <div class="modal-wrapper">
+            <button class="modal-close">&times;</button>
+            
+            <div class="gallery-container">
+                <!-- Add your local gallery sequence paths inside data-gallery split commas -->
+                <img src="papergirl1.jpg" alt="Project Scene View" class="gallery-main-img" 
+                     data-gallery="papergirl1.jpg,papergirl2.jpg,papergirl3.jpg,papergirl4.jpg">
+                <div class="gallery-nav prev">&#10094;</div>
+                <div class="gallery-nav next">&#10095;</div>
+            </div>
+
+            <div class="modal-content">
+                <div class="modal-header-meta">
+                    <span>Short Feature Film - In Development</span>
+                </div>
+                <h2>《念》PAPER GIRL</h2>
+                <div class="modal-body">
+                    <p>What we cannot say to the living, we burn for the dead. Grief is a loop. Love is the exit.</p>
+                    <p>Paper Girl is a silent feature about a paper offering sent into the underworld carrying enough love to free a mother who can no longer leave on her own. </p>
+                    <p>It is about guilt that cannot be spoken to the living, and what love costs when it tries to cross the gate of death. The dead are not stuck in punishment. They are stuck in the last emotional state someone felt for them.</p>
+                    <p>The film demonstrates my approach to Malaysian-Chinese spiritual cinema, with AI rendering an underworld that traditional production cannot afford.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Contact Section / Footer -->
     <section id="contact" class="contact">
         <h2>Let's resurrect a story the world forgot.</h2>
@@ -592,6 +611,7 @@
         <div class="social-links">
             <a href="mailto:liewarthur@gmail.com">Email</a>
             <a href="https://www.instagram.com/arthurliew__/" target="_blank">Instagram</a>
+            <a href="https://www.youtube.com/playlist?list=PL8-LivBr6zdHM_lai1xU5FeAUMVIxRKcN" target="_blank">AIGC Work</a>
         </div>
 
         <footer>
@@ -622,81 +642,92 @@
             });
         });
 
-        /* --- INTERACTIVE MODAL POP-UP LOGIC --- */
-        const projectCard = document.getElementById('trigger-project-1');
-        const modal = document.getElementById('portfolio-modal');
-        const closeModalBtn = document.getElementById('modal-close-btn');
+        /* --- SCALABLE MODAL DISPLAY ENGINE --- */
         const bodyElement = document.body;
-
-        // Open Modal Event
-        projectCard.addEventListener('click', () => {
-            modal.classList.add('active');
-            bodyElement.classList.add('modal-open');
-            activeGalleryIndex = 0; // Reset index to first element when modal pops open
-            updateGalleryImage();
-        });
-
-        // Close Modal Event
-        const closeModal = () => {
-            modal.classList.remove('active');
-            bodyElement.classList.remove('modal-open');
-        };
-
-        closeModalBtn.addEventListener('click', closeModal);
-        
-        // Close modal when hitting backdrop area outside container card box
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Close on escape key
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
-            }
-        });
-
-        /* --- QUICK LOCAL IMAGE GALLERY SWITCHER --- */
-        const galleryImages = [
-            'blooddebt1.jpg', 
-            'blooddebt2.jpg', 
-            'blooddebt3.jpg', 
-            'blooddebt4.jpg', 
-            'blooddebt5.jpg', 
-            'blooddebt6.jpg', 
-            'blooddebt7.jpg'
-        ];
         let activeGalleryIndex = 0;
+        let currentActiveGallery = [];
+        let currentImgElement = null;
 
-        const mainImageContainer = document.getElementById('main-gallery-img');
-        const fallbackText = document.getElementById('gallery-fallback-text');
-        const prevBtn = document.getElementById('gallery-prev');
-        const nextBtn = document.getElementById('gallery-next');
+        // Open Modal Controller
+        document.querySelectorAll('.card[data-modal-target]').forEach(card => {
+            card.addEventListener('click', () => {
+                const targetId = card.getAttribute('data-modal-target');
+                const modal = document.getElementById(targetId);
+                
+                if (modal) {
+                    modal.classList.add('active');
+                    bodyElement.classList.add('modal-open');
+                    
+                    // Parse custom inline slide list array from HTML data attribute target
+                    currentImgElement = modal.querySelector('.gallery-main-img');
+                    if (currentImgElement && currentImgElement.hasAttribute('data-gallery')) {
+                        currentActiveGallery = currentImgElement.getAttribute('data-gallery').split(',');
+                    } else {
+                        currentActiveGallery = [currentImgElement.src];
+                    }
+                    activeGalleryIndex = 0;
+                    updateGalleryImage();
+                }
+            });
+        });
 
-        // Main structural renderer logic engine
+        // Global Dynamic Gallery Image Switcher Renderer Engine Loop
         function updateGalleryImage() {
-            if(galleryImages.length > 0) {
-                if (fallbackText) fallbackText.style.display = 'none';
-                mainImageContainer.src = galleryImages[activeGalleryIndex];
-                mainImageContainer.style.display = 'block';
+            if (currentImgElement && currentActiveGallery.length > 0) {
+                currentImgElement.src = currentActiveGallery[activeGalleryIndex];
             }
         }
 
-        nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Stops pop-up modal box itself from running close toggles
-            if(galleryImages.length > 0) {
-                activeGalleryIndex = (activeGalleryIndex + 1) % galleryImages.length;
-                updateGalleryImage();
+        // Global Modal Event Listeners (Close Toggles / Nav Arrows inside wrapper bounds)
+        document.querySelectorAll('.modal').forEach(modal => {
+            
+            // Close Button Event Toggles
+            modal.querySelector('.modal-close').addEventListener('click', () => {
+                closeModal(modal);
+            });
+
+            // Close modal when hitting backdrop area outside container card box
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+
+            // Next Arrow Action Button Hook
+            const nextBtn = modal.querySelector('.gallery-nav.next');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (currentActiveGallery.length > 0) {
+                        activeGalleryIndex = (activeGalleryIndex + 1) % currentActiveGallery.length;
+                        updateGalleryImage();
+                    }
+                });
+            }
+
+            // Prev Arrow Action Button Hook
+            const prevBtn = modal.querySelector('.gallery-nav.prev');
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (currentActiveGallery.length > 0) {
+                        activeGalleryIndex = (activeGalleryIndex - 1 + currentActiveGallery.length) % currentActiveGallery.length;
+                        updateGalleryImage();
+                    }
+                });
             }
         });
 
-        prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if(galleryImages.length > 0) {
-                activeGalleryIndex = (activeGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
-                updateGalleryImage();
+        function closeModal(modalInstance) {
+            modalInstance.classList.remove('active');
+            bodyElement.classList.remove('modal-open');
+        }
+
+        // Close on escape key configuration rule
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const openModal = document.querySelector('.modal.active');
+                if (openModal) closeModal(openModal);
             }
         });
     </script>
