@@ -490,7 +490,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#work">Work</a></li>
+                <li><a href="#project">Project</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -519,29 +519,29 @@
     </section>
 
     <!-- Showcase Section -->
-    <section id="work">
-        <div class="section-title">02 / Work</div>
+    <section id="project">
+        <div class="section-title">02 / Project</div>
         <div class="showcase-grid">
             
             <!-- Project 1 -->
             <div class="card" data-modal-target="modal-project-1">
                 <div class="card-img">
-                    <img src="blooddebt1.jpg" alt="Narrative Production Showcase" onerror="this.style.display='none';">
+                    <img src="alone1.jpg" alt="Narrative Production Showcase" onerror="this.style.display='none';">
                 </div>
                 <div class="card-meta">
-                    <h3>《血債》Blood Debt</h3>
-                    <p>AI Horror Short Film</p>
+                    <h3>Don't Want To Die Alone</h3>
+                    <p>AI Drama Short</p>
                 </div>
             </div>
             
             <!-- Project 2 -->
             <div class="card" data-modal-target="modal-project-2">
                 <div class="card-img">
-                    <img src="papergirl1.jpg" alt="Paper Girl Film Development" onerror="this.style.display='none';">
+                    <img src="blooddebt1.jpg" alt="Narrative Production Showcase" onerror="this.style.display='none';">
                 </div>
                 <div class="card-meta">
-                    <h3>《念》Paper Girl</h3>
-                    <p>AI Fantasy Feature Film (In Development)</p>
+                    <h3>《血債》Blood Debt</h3>
+                    <p>AI Horror Short</p>
                 </div>
             </div>
             
@@ -560,6 +560,43 @@
 
     <!-- INTERACTIVE POP-UP MODAL (Project 1 Gallery) -->
     <div class="modal" id="modal-project-1">
+        <div class="modal-wrapper">
+            <button class="modal-close">&times;</button>
+            
+            <div class="gallery-container">
+                <img src="blooddebt1.jpg" alt="Project Scene View" class="gallery-main-img" 
+                     data-gallery="alone1.jpg,alone2.jpg,alone3.jpg,alone4.jpg,alone5.jpg">
+                <div class="gallery-nav prev">&#10094;</div>
+                <div class="gallery-nav next">&#10095;</div>
+            </div>
+
+            <div class="modal-content">
+                <div class="modal-header-meta">
+                    <span>Short Film - In Competition</span>
+                </div>
+                <h2>Don't Want To Die Alone</h2>
+                <div class="modal-body">
+                    <p>An NGO worker handles the dead who have no one — unidentified, unclaimed bodies, absent next-of-kin, funerals for strangers.</p>
+                    <p>She's good at sitting with other people's grief. But for her own mother — it's always later, always after this case.</p>
+                    
+                    <!-- FIXED RESPONSIVE VIDEO EMBED CONTAINER -->
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube-nocookie.com/" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE POP-UP MODAL (Project 2 Gallery) -->
+    <div class="modal" id="modal-project-2">
         <div class="modal-wrapper">
             <button class="modal-close">&times;</button>
             
@@ -598,44 +635,6 @@
         </div>
     </div>
 
-    <!-- INTERACTIVE POP-UP MODAL (Project 2 Gallery) -->
-    <div class="modal" id="modal-project-2">
-        <div class="modal-wrapper">
-            <button class="modal-close">&times;</button>
-            
-            <div class="gallery-container">
-                <img src="papergirl1.jpg" alt="Project Scene View" class="gallery-main-img" 
-                     data-gallery="papergirl1.jpg,papergirl2.jpg,papergirl3.jpg,papergirl4.jpg">
-                <div class="gallery-nav prev">&#10094;</div>
-                <div class="gallery-nav next">&#10095;</div>
-            </div>
-
-            <div class="modal-content">
-                <div class="modal-header-meta">
-                    <span>Feature Film - In Development</span>
-                </div>
-                <h2>《念》PAPER GIRL</h2>
-                <div class="modal-body">
-                    <p>What we cannot say to the living, we burn for the dead. Grief is a loop. Love is the exit.</p>
-                    <p>Paper Girl is a silent feature about a paper offering sent into the underworld carrying enough love to free a mother who can no longer leave on her own. </p>
-                    <p>It is about guilt that cannot be spoken to the living, and what love costs when it tries to cross the gate of death. The dead are not stuck in punishment. They are stuck in the last emotional state someone felt for them.</p>
-
-                    <div class="video-container">
-                        <iframe 
-                            src="https://www.youtube-nocookie.com/embed/-VfENB5C8jxU?rel=0" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            referrerpolicy="strict-origin-when-cross-origin" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- INTERACTIVE POP-UP MODAL (Project 3 Gallery) -->
     <div class="modal" id="modal-project-3">
         <div class="modal-wrapper">
@@ -667,9 +666,10 @@
         <p>Open to collaborations in commercial direction, visual storytelling, and AI-driven creative work — worldwide.</p>
         
         <div class="social-links">
-            <a href="mailto:liewarthur@gmail.com">Email</a>
             <a href="https://www.instagram.com/arthurliew__/" target="_blank">Instagram</a>
-            <a href="https://www.youtube.com/playlist?list=PL8-LivBr6zdHM_lai1xU5FeAUMVIxRKcN" target="_blank">AI UGC Work</a>
+            <a href="https://www.threads.com/@arthurliew__" target="_blank">Threads</a>
+            <a href="https://www.tiktok.com/@arthurliew" target="_blank">TikTok</a>
+            <a href="https://xhslink.com/m/3D3WWir5bRV" target="_blank">小红书</a>            
         </div>
 
         <footer>
