@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arthur Liew | Director & AI Visual Creator</title>
+    <title>Arthur Liew 劉安華 | Director & AI Visual Creator</title>
     <style>
         /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
@@ -139,6 +139,8 @@
             letter-spacing: -1px;
             margin-bottom: 1.5rem;
             max-width: 800px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero p {
@@ -148,6 +150,27 @@
             margin-bottom: 2.5rem;
             font-weight: 300;
             line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-decor {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 800;
+            font-family: "Noto Serif TC", "Songti TC", serif;
+            line-height: 1.1;
+            user-select: none;
+            z-index: 0;
+            text-shadow: 0px 10px 30px rgba(229, 9, 20, 0.15);
         }
 
         .btn {
@@ -505,6 +528,10 @@
             }
             .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
             .hero { padding: 0 5%; }
+            .hero-decor { 
+                right: 5%;
+                opacity: 0.3; /* Adjusted for readability on smaller screens */
+            }
             section { padding: 5rem 5%; }
             .modal-content { padding: 1.5rem; }
             .modal { padding: 1rem; }
@@ -538,6 +565,11 @@
     <section id="home" class="hero">
         <h1>Where ancient stories meet future vision.</h1>
         <p>Rooted in folklore and tradition, reimagined through technology, AI, and the ambition to see what no frame has captured before.</p>
+        <div class="hero-decor">
+            <span>劉</span>
+            <span>安</span>
+            <span>華</span>
+        </div>
     </section>
 
     <section id="about">
@@ -690,7 +722,10 @@
 
     <section id="platform" style="text-align: center; padding: 5rem 10%; background: var(--bg-color);">
         <div class="section-title">Platform</div>
-        <a href="https://yaoyo.tv/u/arthurliew" target="_blank" class="btn">YAOYO</a>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+            <a href="https://shaike.ai/shaiker/arthurliew/" target="_blank" class="btn">SHAIKE</a>
+            <a href="https://yaoyo.tv/u/arthurliew" target="_blank" class="btn">YAOYO</a>
+        </div>
     </section>
 
     <section id="inquiry" style="text-align: center; padding: 5rem 10%; background: var(--bg-color);">
