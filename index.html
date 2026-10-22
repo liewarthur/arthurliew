@@ -230,6 +230,14 @@
             text-shadow: 0 1px 12px rgba(0,0,0,0.6);
         }
 
+        .hero .hero-sub,
+        .hero .about-text p {
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+        }
+
         .hero .about-text p:last-child {
             margin-bottom: 0;
         }
@@ -237,7 +245,7 @@
         .hero .hero-sub {
             font-size: clamp(1.1rem, 2vw, 1.5rem);
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: none;
             margin-bottom: 2.5rem;
             font-weight: 300;
             line-height: 1.5;
