@@ -331,19 +331,6 @@
         }
 
         /* --- RECOGNITION SECTION --- */
-        .recognition-group + .recognition-group {
-            margin-top: 3.5rem;
-        }
-
-        .recognition-group h4 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
         .recognition-list {
             list-style: none;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -367,15 +354,11 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: var(--text-muted);
+            color: var(--accent-color);
+            font-weight: 700;
             text-align: right;
             flex-shrink: 0;
             max-width: 50%;
-        }
-
-        .recognition-group.wins .result {
-            color: var(--accent-color);
-            font-weight: 700;
         }
 
         /* --- POP-UP MODAL (LIGHTBOX GALLERY) --- */
@@ -693,34 +676,18 @@
 
     <section id="recognition">
         <div class="section-title">03 / Recognition</div>
-
-        <div class="recognition-group wins">
-            <h4>Awards</h4>
-            <ul class="recognition-list">
-                <li><span class="festival">NOMOREFROG AI Film Awards</span><span class="result">The PINK FROG Award (Grand Prize) · Best AI Music Video</span></li>
-                <li><span class="festival">NOMOREFROG AI Film Awards</span><span class="result">Best AI Experimental Film</span></li>
-                <li><span class="festival">AI Artist</span><span class="result">Honorable Mention</span></li>
-            </ul>
-        </div>
-
-        <div class="recognition-group">
-            <h4>Finalists &amp; Nominations</h4>
-            <ul class="recognition-list">
-                <li><span class="festival">K-Culture AI International Film Festival</span><span class="result">Finalist</span></li>
-                <li><span class="festival">SIGGRAPH Asia AI Film Frontiers</span><span class="result">Semi-Finalist</span></li>
-                <li><span class="festival">Seoul International AI Film Festival</span><span class="result">Nominee</span></li>
-                <li><span class="festival">Los Angeles Fantasy Fest</span><span class="result">Nominee</span></li>
-            </ul>
-        </div>
-
-        <div class="recognition-group">
-            <h4>Official Selections</h4>
-            <ul class="recognition-list">
-                <li><span class="festival">AI Film Festival Japan</span><span class="result">Official Selection · 2 Films</span></li>
-                <li><span class="festival">Hot Springs International Horror Film Festival</span><span class="result">Official Selection</span></li>
-                <li><span class="festival">AI Short Film Festival of Larissa</span><span class="result">Official Selection</span></li>
-            </ul>
-        </div>
+        <ul class="recognition-list">
+            <li><span class="festival">SIGGRAPH Asia AI Film Frontiers</span><span class="result">Semi-Finalist</span></li>
+            <li><span class="festival">AI Film Festival Japan</span><span class="result">Official Selection · 2 Films</span></li>
+            <li><span class="festival">Seoul International AI Film Festival</span><span class="result">Nominee</span></li>
+            <li><span class="festival">K-Culture AI International Film Festival</span><span class="result">Finalist</span></li>
+            <li><span class="festival">Hot Springs International Horror Film Festival</span><span class="result">Official Selection</span></li>
+            <li><span class="festival">Los Angeles Fantasy Fest</span><span class="result">Nominee</span></li>
+            <li><span class="festival">AI Artist</span><span class="result">Honorable Mention</span></li>
+            <li><span class="festival">NOMOREFROG AI Film Awards</span><span class="result">The PINK FROG Award (Grand Prize) · Best AI Music Video</span></li>
+            <li><span class="festival">NOMOREFROG AI Film Awards</span><span class="result">Best AI Experimental Film</span></li>
+            <li><span class="festival">AI Short Film Festival of Larissa</span><span class="result">Official Selection</span></li>
+        </ul>
     </section>
 
     <div class="modal" id="modal-project-1">
