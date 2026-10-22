@@ -251,7 +251,7 @@
             align-items: center;
             gap: 0.5rem;
             color: var(--accent-color);
-            font-size: 3.5rem;
+            font-size: clamp(5rem, 6vw, 7rem);
             font-weight: 800;
             font-family: "Noto Serif TC", "Songti TC", serif;
             line-height: 1.1;
@@ -601,7 +601,7 @@
             .top-social { border-left: none; padding-left: 0; flex-wrap: wrap; justify-content: center; }
             .social-links a, nav a { white-space: nowrap; }
             .hero { padding-top: 7.6rem; justify-content: flex-start; }
-            .hero-decor { font-size: 3rem; }
+            .hero-decor { font-size: 5rem; gap: 1rem; margin-top: 2rem; }
         }
 
         @media (max-width: 768px) {
@@ -647,7 +647,7 @@
             .hero h1 { margin-bottom: 1.25rem; }
             .hero .hero-sub { font-size: 1.05rem; margin-bottom: 2rem; }
             .hero .about-text p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.1rem; }
-            .hero-decor { font-size: 2.25rem; gap: 0.5rem; }
+            .hero-decor { font-size: 3.5rem; gap: 0.75rem; margin-top: 1.25rem; }
             section { padding: 5rem 5%; }
             .modal-content { padding: 1.5rem; }
             .modal { padding: 1rem; }
