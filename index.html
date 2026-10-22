@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0a0a0c">
     <title>Arthur Liew 劉安華 | Director & AI Creator</title>
     <meta name="description" content="Arthur Liew 劉安華 — Kuala Lumpur film director and educator. Folklore and tradition, reimagined through technology and AI. Blood Debt, Don't Want To Die Alone, Spirit Whisperer.">
     <link rel="canonical" href="https://arthurliew.com/">
@@ -35,6 +37,7 @@
 
         /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
+            color-scheme: dark;
             --bg-color: #0a0a0c;
             --surface-color: #121216;
             --surface-hover: #1a1a22;
@@ -62,6 +65,7 @@
         }
 
         body {
+            background-color: var(--bg-color);
             overflow-x: hidden;
         }
 
@@ -201,6 +205,8 @@
 
         .hero {
             overflow: hidden;
+            background-color: var(--bg-color);
+            border-bottom: none;
         }
 
         /* Portrait fills the right side and fades into the page behind the text */
