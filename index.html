@@ -362,6 +362,35 @@
             cursor: pointer;
         }
 
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        .cta-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .inline-link {
+            color: var(--text-main);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+        }
+
+        .inline-link:hover {
+            color: var(--accent-color);
+        }
+
         .btn:hover {
             background-color: transparent;
             color: var(--text-main);
@@ -841,7 +870,7 @@
                 <p class="hero-sub">Rooted in folklore and tradition, reimagined through technology, AI, and the ambition to see what no frame has captured before.</p>
                 <div class="about-text">
                     <p>Arthur is a Kuala Lumpur-based film director and educator — where technical craft meets cinematic instinct.</p>
-                    <p>Founder of production house Blackdotpeople, his work spans commercial campaigns to short films. A member of FDAM (Film Directors' Association of Malaysia) and PROFIMA (Professional Film Workers Association of Malaysia), rooted in Malaysia's creative industry.</p>
+                    <p>Founder of production house <a href="https://blackdotmsia.com/" target="_blank" rel="noopener" class="inline-link">Blackdotpeople</a>, his work spans commercial campaigns to short films. A member of FDAM (Film Directors' Association of Malaysia) and PROFIMA (Professional Film Workers Association of Malaysia), rooted in Malaysia's creative industry.</p>
                     <p>Most recently an alumnus of the BIFAN NAFF Fantastic Film School, Arthur directs, lectures, and explores the frontier of AI-driven visual storytelling — always evolving, always story-first.</p>
                 </div>
                 <div class="partner-chips">
@@ -1050,7 +1079,10 @@
     <section id="inquiry" style="text-align: center; padding: 5rem 10%; background: var(--bg-color);">
         <div class="section-title section-title--bracket" aria-label="Collaborate">C O L L A B O R A T E</div>
         <h2 style="font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 2rem;">Let's connect!</h2>
-        <a href="https://forms.gle/H8fPZixAtAjLak7F7" target="_blank" class="btn">Inquiry Form</a>
+        <div class="cta-row">
+            <a href="https://forms.gle/H8fPZixAtAjLak7F7" target="_blank" rel="noopener" class="btn">Inquiry Form</a>
+            <a href="https://blackdotmsia.com/" target="_blank" rel="noopener" class="btn btn-outline">Live Action Production</a>
+        </div>
     </section>
 
     <section id="contact" class="contact">
